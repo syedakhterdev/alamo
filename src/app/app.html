@@ -1,0 +1,68 @@
+<!--<header>-->
+<!--  <nav>-->
+<!--    <a ui-sref="home">Home</a>-->
+<!--    <a ui-sref="about">About</a>-->
+<!--  </nav>-->
+<!--</header>-->
+<!--<main>-->
+<!--  <h1 class="title">Hello from Angular !</h1>-->
+
+<!--  &lt;!&ndash; Images (and assets) are parsed and loaded from within the public directory &ndash;&gt;-->
+<!--  <img src="/img/logo.png" width="200" height="200">-->
+
+<!--  <div ui-view class="main-content"></div>-->
+<!--</main>-->
+<!--<footer>-->
+<!--  <a ng-href="{{app.url}}">Webpack Angular Starter</a>-->
+<!--</footer>-->
+
+<div class="wrapper">
+  <div class="banner">
+    <div class="welcome">
+      <img src="/img/arrow.png" />
+    </div>
+    <div class="logo">
+      <a href="#">
+        <img src="/img/logo.png" />
+      </a>
+    </div>
+  </div>
+  <!-- Banner End -->
+
+  <!-- Content -->
+  <div class="content">
+    <div class="movies-box">
+      <h3>Find a movie</h3>
+
+      <div class="theater-section" ng-if="cinemas.length">
+        <h4>Select Cinema</h4>
+        <div class="theaters-list">
+          <div
+            ng-repeat="cinema in cinemas track by $index"
+            ng-class="{'theater-item' : !cinema.selected,  'theater-item selected' : cinema.selected}"
+            ng-click="loadMovies(cinema); selected(cinema)"
+          >
+            <a>
+              <span>{{cinema.name}}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="movies-section" ng-if="selectedMovies.length">
+        <h4>Films playing at <span>{{selectedCinema}}</span></h4>
+        <div class="movies-list">
+          <div class="movie-item" ng-repeat="movie in selectedMovies">
+            <a
+              href="https://drafthouse.com/show/{{movie.filmSlug}}"
+              target="_blank"
+            >
+              <span>{{movie.filmName}}</span>
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
